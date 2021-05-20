@@ -29,6 +29,7 @@
 <div class="wrapper">
     <h2>Welkom Bij de registratie van Klapschaats schaats club</h2>
     <p>Vul je gegevens in om een account te maken</p>
+    <!-- dit is een aanmeld formulier -->
     <form method="post" action="voegtoe.php">
         <div class="form-group">
             <div class="mb-3">

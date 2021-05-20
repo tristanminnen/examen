@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+<!--maakt een formulier om te kijken of deze gebruiker bestaat -->
 <div class="wrapper">
     <h2>Login</h2>
     <p>Login in account</p>

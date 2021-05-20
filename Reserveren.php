@@ -1,16 +1,18 @@
 <?php
+// voeg de session file toe om connectie te maken met de database en de sessie wie is ingelocht
 require_once ("session.php");
 //kijkt of de admin inlocht
 if($_SESSION['login_id']=="admin") {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
-        $records = mysqli_query($mysqli,"select * from Tijdblokken WHERE Id_tijd = '$id'"); // fetch data from database
+        $records = mysqli_query($mysqli,"select * from Tijdblokken WHERE Id_tijd = '$id'"); // haalt data uit database
 
         while($data = mysqli_fetch_array($records))
         {
             ?>
             <tr>
+                <!-- maakt een input form aan zodat je een reservering voor een groep kan maken en stuurt het naar reserverenverwerk.php -->
                 <form method="post" action="ReserverenVerwerk.php">
                     <div class="form-group" >
                         <div class="form-group" >

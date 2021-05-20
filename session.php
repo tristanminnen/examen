@@ -1,4 +1,5 @@
 <?php
+// maakt een connectie met de config.php voor database connectie info
 include("config.php");
 session_start();
 if($_SESSION['login_id']) {
@@ -32,9 +33,12 @@ if($_SESSION['login_id']) {
 }
 if(isset($_POST['submit']))
 {
+    // haalt de bestanden op
     $email = mysqli_real_escape_string($mysqli,$_POST['email']);
     $wachtwoord = mysqli_real_escape_string($mysqli,$_POST['wachtwoord']);
+    // zeet het wachtwoord in een geincrypte md5
     $wachtwoord = md5($wachtwoord);
+    // checkt voor gegevens voor het admin account en als die kloppen word je ingelocht
     if($email == "admin@admin.nl" AND $wachtwoord == "9e860fba8d4a603b2fefc0f766bf9c50") {
         $_SESSION['login_id'] = "admin";
         $_SESSION['login_naam'] = "admin";
@@ -48,9 +52,10 @@ if(isset($_POST['submit']))
 
         $count = mysqli_num_rows($result);
 
-        // If result matched $myusername and $mypassword, table row must be 1 row
+        // als Email en wachtwoord matchen word je ingelogd
 
         if ($count == 1) {
+            // geef data mee met de sessie
             $_SESSION['login_id'] = $row["Id_user"];
             $_SESSION['login_naam'] = $row["Naam"];
 

@@ -1,10 +1,12 @@
 <?php
+// voeg de session file toe om connectie te maken met de database en de sessie wie is ingelocht
 require_once ("session.php");
 //kijkt of de admin inlocht
 if($_SESSION['login_id']=="admin") {
-// Attempt select query execution
+// select de query
     $sql = "SELECT DISTINCT Date FROM `Tijdblokken`";
     if ($result = mysqli_query($mysqli, $sql)) {
+        // dit maakt de table aan met alle gegevens
         if (mysqli_num_rows($result) > 0) {
             echo "<table class='table'>";
             echo "<tr>";
@@ -20,7 +22,6 @@ if($_SESSION['login_id']=="admin") {
             echo'<form method="post" action="AddTimeStamp.php">';
             echo '<input type="submit" class="btn btn-primary" value="Voeg Tijdblokken toe" name="Voeg Tijdblokken toe">';
             echo '</form>';
-            // Free result set
             mysqli_free_result($result);
         } else {
             echo'<form method="post" action="AddTimeStamp.php">';
@@ -33,7 +34,7 @@ if($_SESSION['login_id']=="admin") {
 }
 //kijkt of het een user is
 elseif ($_SESSION['login_id']){
-    // Attempt select query execution
+    // wirdt gecheckt op unique datum waarde
     $sql = "SELECT DISTINCT Date FROM `Tijdblokken`";
     if ($result = mysqli_query($mysqli, $sql)) {
         if (mysqli_num_rows($result) > 0) {

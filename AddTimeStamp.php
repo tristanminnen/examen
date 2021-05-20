@@ -1,6 +1,6 @@
 <?php
 require_once ("session.php");
-//kijkt of de admin inlocht
+//kijkt of de admin inlocht is en geeft alleen content weer voor de admin
 if($_SESSION['login_id']=="admin") { ?>
     <!doctype html>
     <html lang="en">
@@ -21,7 +21,7 @@ if($_SESSION['login_id']=="admin") { ?>
         <script>
             var counter = 1;
             var dynamicInput = [];
-
+            //hier wordt een niewe div aangemaakt voor elke keer als je op de plus komt om een nieuw tijd vak aan te maken.
             function addInput() {
                 var newdiv = document.createElement('div');
                 newdiv.classList.add('form-group');
@@ -62,6 +62,7 @@ if($_SESSION['login_id']=="admin") { ?>
         </style>
     </head>
     <body>
+    <!-- hier wordt een html gemaakt voor de tijdvakken input form -->
     <div class="wrapper">
         <h2>Maak Tijdvak</h2>
         <p>Klik op het plusje voor een extra tijdblok, tijdblokken gaan per 30 minuten</p>

@@ -1,13 +1,15 @@
 <?php
+// voeg de session file toe om connectie te maken met de database en de sessie wie is ingelocht
 require_once ("session.php");
 if($_SESSION['login_id']=="admin") {
 }elseif ($_SESSION['login_id']){
     $id=$_SESSION['login_id'];
-        // Include config file
+        // maakt een connectie met database
         $sql = "SELECT * FROM Inschrijven WHERE Id_user = '$id'";
 
         if ($result = mysqli_query($mysqli, $sql)) {
             if (mysqli_num_rows($result) > 0) {
+                // maakt een tabel
                 echo "<table class='table'>";
                 echo "<tr>";
                 echo "<th scope='col'>Datum</th>";
@@ -17,6 +19,7 @@ if($_SESSION['login_id']=="admin") {
                 while ($row = mysqli_fetch_array($result)) {
                     $tijd = $row['Id_tijd'];
                     $Id = $row['Id_ins'];
+                    // checkt of de user zich al ergens heeft ingeschreven
                     $sql2 = "SELECT * FROM Tijdblokken WHERE Id_tijd = '$tijd'";
                     if ($result2 = mysqli_query($mysqli, $sql2)) {
                         if (mysqli_num_rows($result2) > 0) {
@@ -32,7 +35,7 @@ if($_SESSION['login_id']=="admin") {
                     }
                 }
                 echo "</table>";
-                // Free result set
+
                 mysqli_free_result($result);
             } else {
                 echo "U bent nog niet ingeschreven";
