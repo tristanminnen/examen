@@ -1,7 +1,7 @@
 <?php
 
 // voeg de config file toe
-require_once 'config.php';
+require_once ("session.php");
 if (isset($_POST['Submit'])) {
 
 
@@ -18,4 +18,5 @@ if (isset($_POST['Submit'])) {
         $stmt->execute();
     }
 }
+header("location: OverzichtAdmin.php");
 

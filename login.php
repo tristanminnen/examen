@@ -43,9 +43,9 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Submit" name="Submit">
+            <input type="submit" class="btn btn-primary" value="Submit" name="submit">
         </div>
-        <p>Heb je nog geen account? <a href="index.php">Login here</a>.</p>
+        <p>Heb je nog geen account? <a href="index.php">Registreer</a>.</p>
     </form>
 </div>
 </body>

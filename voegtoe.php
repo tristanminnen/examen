@@ -1,6 +1,6 @@
 <?php
 // voeg de config file toe
-require_once 'config.php';
+require_once ("session.php");
 if(isset($_POST['Submit']))
 {
     $naam = $_POST['naam'];
@@ -9,10 +9,9 @@ if(isset($_POST['Submit']))
     $telefoon = $_POST['telefoon'];
     $email = $_POST['email'];
     $wachtwoord = md5($_POST['wachtwoord']);
+    $lid = $_POST['lid'];
 
-    if ($_POST['test'] == '1'){
-        $lid = 1;
-    }else $lid = 0;
+
     $sql = "INSERT INTO Users (Naam, Addres, Plaats, Telefoon, Email, Wachtwoord, Lid)
 	 VALUES ('$naam','$addres','$plaats','$telefoon','$email','$wachtwoord','$lid')";
     if (mysqli_query($mysqli, $sql)) {
@@ -23,5 +22,6 @@ if(isset($_POST['Submit']))
     }
     mysqli_close($mysqli);
 }
+header("location: login.php");
 
 ?>
